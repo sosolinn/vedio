@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR 手势特效小视频拍摄</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 引入 MediaPipe Hands -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="phone-frame">
+    <!-- 隐藏的原始摄像头视频流 -->
+    <video id="webcam" playsinline style="display: none;"></video>
+
+    <!-- 用来展示和录制的 9:16 竖屏画布 -->
+    <canvas id="stage" width="540" height="960"></canvas>
+
+    <!-- 顶部提示与录制计时 -->
+    <div class="top-bar">
+      <div id="gestureTip">👋 试试：食指画星光｜捏合放爱心｜张手出魔法阵</div>
+      <div id="timer" class="timer hidden">● 00:00</div>
+    </div>
+
+    <!-- 底部仿 TikTok 拍摄按钮 -->
+    <div class="controls">
+      <button id="recordBtn" class="record-btn" title="开始/停止录制"></button>
+      <p id="recordText">点击开始拍摄</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

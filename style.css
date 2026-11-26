@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0f12;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+}
+
+.phone-frame {
+  position: relative;
+  height: 92vh;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+#stage {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.top-bar {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+#gestureTip {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.timer {
+  background: rgba(254, 44, 85, 0.9);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.controls {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.record-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: #fe2c55;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.record-btn.recording {
+  border-radius: 16px;
+  transform: scale(0.85);
+  background: #ff1744;
+  box-shadow: 0 0 20px #fe2c55;
+}
+
+#recordText {
+  font-size: 12px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
