@@ -3,34 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AR 手势特效小视频拍摄</title>
+  <title>创意手势舞 AR 拍摄器</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- 引入 MediaPipe Hands -->
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1.1675465747/selfie_segmentation.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="phone-frame">
-    <!-- 隐藏的原始摄像头视频流 -->
-    <video id="webcam" playsinline style="display: none;"></video>
+    <!-- 隐藏的原始摄像头流 -->
+    <video id="webcam" playsinline muted hidden></video>
 
-    <!-- 用来展示和录制的 9:16 竖屏画布 -->
+    <!-- 9:16 竖屏合成与录制画布 -->
     <canvas id="stage" width="540" height="960"></canvas>
 
-    <!-- 顶部提示与录制计时 -->
+    <!-- 3 秒开拍倒计时（仅网页可见，不会被录进视频） -->
+    <div id="countdown" class="countdown hidden">3</div>
+
+    <!-- 顶部提词与录制计时 -->
     <div class="top-bar">
-      <div id="gestureTip">👋 试试：食指画星光｜捏合放爱心｜张手出魔法阵</div>
+      <div id="gestureTip">⛰️ 线条山脉：抬起双手拉起山峰</div>
+      <div id="nextCue" class="next-cue hidden"></div>
       <div id="timer" class="timer hidden">● 00:00</div>
     </div>
 
-    <!-- 底部仿 TikTok 拍摄按钮 -->
-    <div class="controls">
-      <button id="recordBtn" class="record-btn" title="开始/停止录制"></button>
-      <p id="recordText">点击开始拍摄</p>
+    <!-- 底部：特效预览栏 + 一键自动卡点拍摄按钮 -->
+    <div class="bottom-panel">
+      <div class="mode-bar">
+        <button class="mode-btn active" data-mode="mountain">⛰️ 山脉</button>
+        <button class="mode-btn" data-mode="halftone">🕶️ 网点</button>
+        <button class="mode-btn" data-mode="portal">🪟 双手框</button>
+        <button class="mode-btn" data-mode="skeleton">🍁 骨架叶</button>
+        <button class="mode-btn" data-mode="cards">🖼️ 记忆框</button>
+      </div>
+
+      <div class="controls">
+        <button id="recordBtn" class="record-btn" type="button" aria-label="开始自动卡点拍摄" aria-describedby="recordText" disabled></button>
+        <p id="recordText" role="status">正在开启摄像头…</p>
+      </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
-
